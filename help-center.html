@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+  <title>Contact Us | UniBite</title>
+  <style>
+    :root {
+      --green: #93BE55;
+      --blue: #2672C3;
+      --orange: #E95322;
+      --text: #391713;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "League Spartan", sans-serif;
+    }
+
+    body {
+      background: var(--blue);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    nav {
+      width: 100%;
+      background-color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .logo img {
+      height: 45px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .nav-links li a img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .header {
+      width: 100%;
+      background: var(--blue);
+      color: #fff;
+      padding: 45px 25px 30px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .back {
+      position: absolute;
+      left: 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .header p {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--green);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .panel {
+      background: #fff;
+      flex: 1;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      padding: 40px 30px 120px;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+      color: var(--text);
+    }
+
+    /* Buttons (FAQ / Contact Us) */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .buttons button {
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 20px;
+      padding: 10px 36px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buttons button.active {
+      background: var(--green);
+    }
+
+    .buttons button:not(.active) {
+      background: var(--blue);
+    }
+
+    .buttons button:hover { opacity: 0.9; }
+
+    /* Contact items */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+    }
+
+    .contact-item .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-item img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .contact-item span {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* FAQ section */
+    .extra-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .extra-buttons button {
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 10px 25px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .extra-buttons button.active {
+      background: var(--green);
+    }
+
+    .extra-buttons button:not(.active) {
+      background: var(--blue);
+    }
+
+    .search-section { margin-top: 25px; }
+
+    .search-bar {
+      background: #F5F5F5;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 16px;
+      color: var(--text);
+      width: 100%;
+    }
+
+    .search-icon {
+      background: var(--orange);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .search-icon img {
+      width: 16px;
+      height: 16px;
+      filter: brightness(0) invert(1);
+    }
+
+    .faq-item { margin-top: 15px; }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      color: var(--text);
+      font-size: 15px;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .faq-answer.open { display: block; }
+
+    .arrow { font-size: 20px; color: var(--orange); transition: 0.3s; }
+
+    .red-line {
+      height: 1px;
+      background-color: var(--orange);
+      margin-top: 10px;
+    }
+
+    /* Navbar on Mobile */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .header {
+        padding-top: 60px; /* عشان نترك مسافة بدل الـ Navbar */
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="imgs/unibite-logo.png" alt="UniBite Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.php"><img src="imgs/icons/home.png">Home</a></li>
+      <li><a href="#"><img src="imgs/icons/meal.png">Meal</a></li>
+      <li><a href="#"><img src="imgs/icons/favorite.png">Favorite</a></li>
+      <li><a href="orders.php"><img src="imgs/icons/orders.png">Orders</a></li>
+      <li><a href="#" class="active"><img src="imgs/icons/contact.png">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <div class="header-inner">
+      <div class="back" onclick="history.back()">&lt;</div>
+      <h1>Help Center</h1>
+    </div>
+    <p>How can we help you?</p>
+  </div>
+
+  <div class="panel">
+    <div class="buttons">
+      <button class="faq-btn active">FAQ</button>
+      <button class="contact-btn">Contact Us</button>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <div class="extra-buttons">
+        <button class="active">General</button>
+        <button>Account</button>
+        <button>Services</button>
+      </div>
+
+      <div class="search-section">
+        <div class="search-bar">
+          <input type="text" placeholder="Search..." class="search-input">
+          <div class="search-icon">
+            <img src="imgs/icons/filters-icon.png" alt="Search">
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How do I use the web ?</span>
+            <span class="arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+           You can navigate through the web easily using the bottom menu.
+          </div>
+          <div class="red-line"></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I track my cafeteria order??</span>
+            <span class="arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            Yes, once you place your order, you can track its status in the Orders section.
+          </div>
+          <div class="red-line"></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How can I order from the cafeteria?</span>
+            <span class="arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+           You can browse the cafeteria menu and add items to your cart, then confirm your order.
+        </div>
+      </div>
+    </div>
+</div>
+    <!-- Contact Section (Hidden initially) -->
+    <div class="contact-section" style="display:none;">
+      <div class="contact-item">
+        <div class="left">
+          <img src="imgs/icons/customer-service.png">
+          <span>Customer Service</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="left">
+          <img src="imgs/icons/whatsapp.png">
+          <span>Whatsapp</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="left">
+          <img src="imgs/icons/instagram.png">
+          <span>Instagram</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const faqBtn = document.querySelector('.faq-btn');
+    const contactBtn = document.querySelector('.contact-btn');
+    const faqSection = document.querySelector('.faq-section');
+    const contactSection = document.querySelector('.contact-section');
+    const headerTitle = document.querySelector('.header h1');
+
+    faqBtn.onclick = () => {
+      faqBtn.classList.add('active');
+      contactBtn.classList.remove('active');
+      faqSection.style.display = 'block';
+      contactSection.style.display = 'none';
+      headerTitle.textContent = 'Help Center';
+    };
+
+    contactBtn.onclick = () => {
+      contactBtn.classList.add('active');
+      faqBtn.classList.remove('active');
+      faqSection.style.display = 'none';
+      contactSection.style.display = 'block';
+      headerTitle.textContent = 'Contact Us';
+    };
+
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const ans = q.nextElementSibling;
+        const arrow = q.querySelector('.arrow');
+        ans.classList.toggle('open');
+        arrow.style.transform = ans.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+      });
+    });
+
+    document.querySelectorAll('.extra-buttons button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.extra-buttons button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

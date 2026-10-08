@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Address | UniBite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #93BE55;
+      --blue: #2672C3;
+      --text: #391713;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "League Spartan", sans-serif;
+    }
+
+    body {
+      background: var(--blue);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 45px 25px 40px;
+      background: var(--blue);
+      color: #F8F8F8;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+      flex: 1;
+    }
+
+    .back {
+      font-size: 28px;
+      font-weight: 600;
+      color: #F5F5F5;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .spacer {
+      width: 28px;
+    }
+
+    /* White Panel */
+    .panel {
+      background: #fff;
+      flex: 1;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      padding: 40px 25px 120px;
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+      color: var(--text);
+    }
+
+    .address-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      cursor: pointer;
+    }
+
+    .address-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .address-left span {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .address-left img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .check::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: var(--green);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .check.active::after {
+      opacity: 1;
+    }
+
+    .divider {
+      height: 1px;
+      background: #E0E0E0;
+      width: 100%;
+    }
+
+    /* Bottom Navbar */
+    .bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--green);
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 0;
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+
+    .bottom-nav a img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      opacity: 0.9;
+      transition: transform 0.3s;
+    }
+
+    .bottom-nav a.active img {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 1024px) {
+      .bottom-nav { display: flex; }
+      .panel { border-radius: 40px 40px 0 0; padding-bottom: 130px; }
+    }
+
+    @media (min-width: 1025px) {
+      body { align-items: center; }
+      .panel { margin-top: 40px; border-radius: 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="back" onclick="history.back()">&lt;</div>
+    <h1>Address</h1>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- Panel -->
+  <div class="panel">
+    <div class="address-item">
+      <div class="address-left">
+        <img src="imgs/icons/home-icon.png" alt="Home Icon">
+        <span>شهبه</span>
+      </div>
+      <div class="check active"></div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="address-item">
+      <div class="address-left">
+        <img src="imgs/icons/home-icon.png" alt="Home Icon">
+        <span>بهر</span>
+      </div>
+      <div class="check"></div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="address-item">
+      <div class="address-left">
+        <img src="imgs/icons/home-icon.png" alt="Home Icon">
+        <span>العقيق</span>
+      </div>
+      <div class="check"></div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="address-item">
+      <div class="address-left">
+        <img src="imgs/icons/home-icon.png" alt="Home Icon">
+        <span>بلجرشي</span>
+      </div>
+      <div class="check"></div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="address-item">
+      <div class="address-left">
+        <img src="imgs/icons/home-icon.png" alt="Home Icon">
+        <span>المخواه</span>
+      </div>
+      <div class="check"></div>
+    </div>
+  </div>
+
+  <!-- Bottom Navbar -->
+  <div class="bottom-nav">
+    <a href="index.php"><img src="imgs/icons/home.png" alt="Home"></a>
+    <a href="meals.php"><img src="imgs/icons/meal.png" alt="Meal"></a>
+    <a href="favorites.php"><img src="imgs/icons/favorite.png" alt="Favorite"></a>
+    <a href="orders.php"><img src="imgs/icons/orders.png" alt="Orders"></a>
+    <a href="contact-us.html"><img src="imgs/icons/contact.png" alt="Contact Us"></a>
+  </div>
+
+  <script>
+    const addressItems = document.querySelectorAll('.address-item');
+    addressItems.forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.check').forEach(c => c.classList.remove('active'));
+        item.querySelector('.check').classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

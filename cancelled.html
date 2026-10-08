@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+  <title>Order Cancelled | UniBite</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background-color: #fff;
+      font-family: "League Spartan", sans-serif;
+      color: #391713;
+      text-align: center;
+      margin: 0;
+    }
+
+    .cancel-header {
+      /* background-color: #2672C3; */
+      color: #fff;
+      padding: 1.2rem 1.5rem;
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cancel-header .back-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: black;
+      font-size: 1.8rem;
+    }
+
+    .cancel-body {
+      padding: 2.5rem 1rem 6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cancel-body img {
+      width: 150px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cancel-body h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .cancel-body p {
+      font-size: 0.95rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: #391713;
+      margin-bottom: 2rem;
+    }
+
+    .bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #93BE55;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 0;
+      z-index: 1000;
+    }
+    .bottom-nav a img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+    @media (max-width: 1024px) {
+      .bottom-nav { display: flex; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="cancel-header">
+<button class="back-btn" onclick="location.href='index.php'">&lt;</button>
+    <div style="width: 24px;"></div>
+  </section>
+
+  <section class="cancel-body">
+    <img src="imgs/icons/cancellLed-icon.png-removebg-preview.png" alt="Cancelled">
+    <h2>Order Cancelled</h2>
+    <p>Your order has been successfully cancelled</p>
+  </section>
+
+  <p class="footer-text">
+    If you have any question reach directly to our customer support
+  </p>
+
+  <div class="bottom-nav">
+    <a href="index.php"><img src="imgs/icons/home.png" alt="Home"></a>
+    <a href="meals.php"><img src="imgs/icons/meal.png" alt="Meal"></a>
+    <a href="favorites.php"><img src="imgs/icons/favorite.png" alt="Favorite"></a>
+    <a href="orders.php" class="active"><img src="imgs/icons/orders.png" alt="Orders"></a>
+    <a href="contact-us.html"><img src="imgs/icons/contact.png" alt="Contact"></a>
+  </div>
+
+</body>
+</html>

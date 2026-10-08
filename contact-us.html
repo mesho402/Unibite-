@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+  <title>Contact Us | UniBite</title>
+  <style>
+    :root {
+      --green: #93BE55;
+      --blue: #2672C3;
+      --orange: #E95322;
+      --text: #391713;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "League Spartan", sans-serif;
+    }
+
+    body {
+      background: var(--blue);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    nav {
+      width: 100%;
+      background-color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .logo img {
+      height: 45px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .nav-links li a img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .header {
+      width: 100%;
+      background: var(--blue);
+      color: #fff;
+      padding: 45px 25px 30px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center; /* ← يخلي السهم والعنوان في نفس الخط تمامًا */
+      justify-content: center;
+      position: relative;
+    }
+
+    .back {
+      position: absolute;
+      left: 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .panel {
+      background: #fff;
+      flex: 1;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      padding: 40px 30px 120px;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+      color: var(--text);
+    }
+
+    /* --- Help landing section --- */
+    .help-intro {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #FFD8C7;
+      margin: 25px 0;
+    }
+
+    .help-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 5px 0;
+    }
+
+    .help-left {
+      display: flex;
+      flex-direction: column;
+      gap: 5px; /* مسافة بين السطرين */
+    }
+
+    .help-left strong {
+      font-size: 18px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .help-left span {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .help-right {
+      color: var(--orange);
+      font-size: 26px;
+      font-weight: 700;
+      align-self: center; /* يخلي السهم في النص عمودياً */
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .header { padding-top: 60px; }
+      body { overflow-x: hidden; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="imgs/unibite-logo.png" alt="UniBite Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.php"><img src="imgs/icons/home.png">Home</a></li>
+      <li><a href="meals.php"><img src="imgs/icons/meal.png">Meal</a></li>
+      <li><a href="favorites.php"><img src="imgs/icons/favorite.png">Favorite</a></li>
+      <li><a href="orders.php"><img src="imgs/icons/orders.png">Orders</a></li>
+      <li><a href="contact-us.html" class="active"><img src="imgs/icons/contact.png">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <div class="header-inner">
+      <div class="back" onclick="history.back()">&lt;</div>
+      <h1>Help</h1>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p class="help-intro">
+How can we help you ?
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="help-link" onclick="window.location.href='support.html'">
+      <div class="help-left">
+        <strong>Help with the order</strong>
+        <span>Support</span>
+      </div>
+      <div class="help-right">&gt;</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="help-link" onclick="window.location.href='help-center.html'">
+      <div class="help-left">
+        <strong>Help center</strong>
+        <span>General Information</span>
+      </div>
+      <div class="help-right">&gt;</div>
+    </div>
+
+    <div class="divider"></div> <!-- أضفنا خط بعد آخر عنصر -->
+  </div>
+
+</body>
+</html>

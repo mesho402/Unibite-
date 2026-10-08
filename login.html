@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+  <title>Login</title>
+  <style>
+    :root {
+      --green: #93BE55;
+      --blue: #2672C3;
+      --text: #391713;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "League Spartan", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background: var(--blue);
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 70px 25px 20px;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      flex: 1;
+      text-align: center;
+    }
+
+    .back {
+      font-size: 28px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .spacer { width: 28px; }
+
+    .panel {
+      background: #fff;
+      flex: 1;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      margin-top: 40px;
+      padding: 80px 40px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text);
+    }
+
+    h2 { font-size: 22px; margin-bottom: 25px; color: var(--text); }
+
+    label {
+      align-self: flex-start;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      background: var(--blue);
+      border: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 18px;
+      outline: none;
+    }
+
+    input::placeholder { color: var(--text); opacity: 0.8; }
+
+    .password-container {
+      width: 100%;
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 35%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .forget {
+      align-self: flex-end;
+      color: var(--green);
+      font-size: 13px;
+      margin-bottom: 25px;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      width: 100%;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .signup-text {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .signup-text a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .msg {
+      width: 100%;
+      background: #ffcccc;
+      color: #391713;
+      font-size: 14px;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="back" onclick="history.back()">&lt;</div>
+    <h1>Hello!</h1>
+    <div class="spacer"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Welcome</h2>
+    
+    <form action="login_auth.php" method="POST">
+    <label>email</label>
+    <input type="email" id="userInput" placeholder="example@example.com" name="email">
+
+    <label>Password</label>
+    <div class="password-container">
+      <input type="password" id="password" placeholder="***********" name="password">
+      <img src="imgs/icons/showoff.png" class="toggle-password" onclick="togglePassword()">
+    </div>
+
+    <div class="forget" onclick="location.href='forget-password.php'">Forget Password</div>
+    
+    <div class="msg" style="display:none;"></div>
+    
+    <button type="input" class="login-btn" id="loginBtn">Log In</button>
+  </form>
+    <div class="signup-text">
+      Don’t have an account? <a href="register.html">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const p = document.getElementById("password");
+      p.type = p.type === "password" ? "text" : "password";
+    }
+
+    function showMessage(text) {
+      const msg = document.querySelector(".msg");
+      msg.textContent = text;
+      msg.style.display = "block";
+      setTimeout(() => msg.style.display = "none", 2000);
+    }
+
+    document.getElementById("loginBtn").addEventListener("click", function() {
+      const input = document.getElementById("userInput").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!input || !password) {
+        showMessage("Please fill in all fields.");
+        return;
+      }
+
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input);
+      const isPhone = /^(\+?\d{10,15})$/.test(input);
+
+      if (!isEmail && !isPhone) {
+        showMessage("Enter a valid email or phone number.");
+        return;
+      }
+
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "index.php";
+    });
+  </script>
+</body>
+</html>
